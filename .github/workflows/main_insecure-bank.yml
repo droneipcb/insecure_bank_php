@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'insecure-bank'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1440D0DD77EB4BAAA5FB15DD1A88A702 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_30102164E5AA474584FD8D043666189B }}
           package: .
