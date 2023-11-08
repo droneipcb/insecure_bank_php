@@ -3,7 +3,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'aluno123
 CREATE DATABASE otariobank;
 USE otariobank;
 
-CREATE TABLE IF NOT EXISTS users (id int NOT NULL AUTO_INCREMENT,username varchar(255) NOT NULL,password varchar(255) NOT NULL, role varchar(32) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE IF NOT EXISTS users (id int NOT NULL AUTO_INCREMENT,username varchar(255) NOT NULL,password varchar(255) NOT NULL, role varchar(32) NOT NULL, PRIMARY KEY (id), UNIQUE (username) );
 
 INSERT INTO users (username,password,role) VALUES ('admin','admin','admin');
 INSERT INTO users (username,password,role) VALUES ('gestor','gestor','gestor');

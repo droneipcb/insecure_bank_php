@@ -34,13 +34,6 @@ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db)
 <title>Welcome to Otário Bank</title>
 </head>
 
-<!-- Esta parte contém Javascript -->
-<script>
-$(document).ready(function() {
-    $("#menu_div").animate({width: "220px"});
-});
-</script>
-<!-- Fim do Javascript -->
 
 <body>
 
@@ -62,9 +55,10 @@ $(document).ready(function() {
       
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo "<p><useritem>".$row['username']."</useritem>";
-          echo "&nbsp;&nbsp;&nbsp; <a href='editar_utilizador.php'>Editar</a>";
-          echo "&nbsp;&nbsp;&nbsp; <a href='apagar_utilizador.php'>Apagar</a>";
+          $username = $row['username'];
+          echo "<p><useritem>$username</useritem>";
+          echo "<a class='operation_item' href='editar_utilizador.php'>Editar</a>";
+          echo "<a class='operation_item' href='apagar_utilizador.php?username=$username'>Apagar</a>";
         }
       }
 

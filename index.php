@@ -1,8 +1,13 @@
 <?php
 
+// Estas 3 diretivas ativam a geracao de erros no ecran
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+// Fecha qualquer sessao ativa e inicia uma nova sessao
+if (session_status() == PHP_SESSION_ACTIVE) 
+	session_destroy();
 
 session_start();
 
@@ -12,22 +17,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 // username and password sent from form 
 
-//não há qualquer verificação dos dados de entrada
+// Reparar que não há qualquer sanitizacao dos dados de entrada
 $myusername=$_POST['username']; 
 $mypassword=$_POST['password']; 
 
+// Reparar que existem segredos hardcoded no codigo fonte
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "aluno123";
 $db = "otariobank";
 
+// abrir a ligacao a base de dados
 $conn = new mysqli($dbhost, $dbuser, $dbpass,$db)
 	or die("Ligacao a base de dados falhou: %s\n". $conn -> error);
 
 
-
-
-//esta propositadamente vulneravel a SQL injection
+// Este codigo esta propositadamente vulneravel a SQL injection
 $sqlQuery="SELECT * FROM users WHERE username='$myusername' and password='$mypassword';";
 	
 $result = $conn->query($sqlQuery);
@@ -36,11 +41,15 @@ if ($result->num_rows > 0  &&  $row = $result->fetch_assoc()) {
 	$_SESSION['login_user'] = $row['username'];
 	$_SESSION['user_role'] = $row['role'];
 
+	// Fechar a ligacao a base de dados
 	$conn -> close(); 
+	
+	// Transferir o utilizador para a pagina welcome
 	header("location: welcome.php");
 }
 
 else  {
+	// Fechar a ligacao a base de dados
 	$conn -> close();
 	$error="Your Login Name or Password is invalid";
 }
@@ -56,21 +65,13 @@ else  {
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
 <head>
-
 <link rel="stylesheet" type="text/css" href="styles.css">
-
 <script src="jquery-3.3.1.min.js"></script>
-
-<title>Login Page</title>
-
+<title>Insecure Bank - Login Page</title>
 </head>
 
 
@@ -79,17 +80,18 @@ else  {
 
 $(document).ready(function() {
 
-    $("#auth").hide().fadeIn(1000);
+    $("#auth").hide().fadeIn(2000);
 
 });
 
 </script>
 <h1>Welcome to Insecure Bank</h1>
+<h2>The place where your money vanishes</h2>
 
 
 <div id="auth" class="auth_div">
 	<form action="" method="post">
-		<label>Username</label>
+		<label>UserName</label>
 		<input id="username" type="text" name="username" class="box"/><br /><br />
 
 		<label>Password</label>
@@ -98,7 +100,7 @@ $(document).ready(function() {
 		<input class="login_button" type="submit" value=" Login "/><br />
 
 	</form>
-	<center><div style="font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+	<div id="error_div"><?php echo $error; ?></div>
 </div>
 </body>
 </html>

@@ -23,32 +23,26 @@ $username = $_SESSION['login_user'];
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css" href="styles2.css">
 <script src="jquery-3.3.1.min.js"></script>
-<title>Insecure Bank - Send Message</title>
+<title>Welcome to Insecure Bank</title>
 </head>
 
+<!-- Esta parte contém Javascript -->
+<script>
+$(document).ready(function() {
+    $("#menu_div").animate({width: "220px"});
+});
+</script>
+<!-- Fim do Javascript -->
 
 <body>
 
-<!-- Esta div corresponde ao menu do lado esquerdo -->
 <!-- Menu lateral -->
 <div id='menu_div'>
   <?php include 'menu.php';?> 
 </div> 
 
-
-<!-- Esta div corresponde ao conteudo ao lado direito do menu -->
 <div id='conteudo'>
-    <h1> Envie uma mensagem ao seu gestor de conta </h1>
-    <p class="message_text"> Escreva a sua mensagem </p>
-
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <textarea name='mensagem' id='mensagem' > </textarea>
-        <p class="message_text"> Pode também fazer o upload de um ficheiro </p>
-
-        <input class="message_text" type="file" name="fileToUpload" id="fileToUpload">
-        <p><div class='center_content'><input id="submit_button" type="submit" value="Enviar mensagem" name="submit"></div>
-    </form>
-
+    <h1> Bem-vindo <?php echo $username; ?> </h1>
 
 </div>
 

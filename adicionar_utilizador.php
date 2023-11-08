@@ -23,7 +23,7 @@ $username = $_SESSION['login_user'];
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css" href="styles2.css">
 <script src="jquery-3.3.1.min.js"></script>
-<title>Insecure Bank - Send Message</title>
+<title>Insecure Bank - Adicionar Novo Utilizador</title>
 </head>
 
 
@@ -38,15 +38,15 @@ $username = $_SESSION['login_user'];
 
 <!-- Esta div corresponde ao conteudo ao lado direito do menu -->
 <div id='conteudo'>
-    <h1> Envie uma mensagem ao seu gestor de conta </h1>
-    <p class="message_text"> Escreva a sua mensagem </p>
+    <h1> Adicione um novo utilizador </h1>
+    <form action="add_user.php" method="get" enctype="multipart/form-data">
+        <p></p><label_input>Username:</label_input> <input class='new_user' name='new_username' id='new_username' > </input>
+        <br><br>
+        <p></p><label_input>Password:</label_input> <input class='new_user' name='new_password' id='new_password' > </input>
 
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <textarea name='mensagem' id='mensagem' > </textarea>
-        <p class="message_text"> Pode também fazer o upload de um ficheiro </p>
-
-        <input class="message_text" type="file" name="fileToUpload" id="fileToUpload">
-        <p><div class='center_content'><input id="submit_button" type="submit" value="Enviar mensagem" name="submit"></div>
+        <br><br><br><br>
+                  
+        <div class='center_content'><input id="submit_button" type="submit" value="Criar utilizador" name="submit"></div>
     </form>
 
 

@@ -23,16 +23,8 @@ $username = $_SESSION['login_user'];
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" type="text/css" href="styles2.css">
 <script src="jquery-3.3.1.min.js"></script>
-<title>Welcome to Otário Bank</title>
+<title>Welcome to Insecure Bank</title>
 </head>
-
-<!-- Esta parte contém Javascript -->
-<script>
-$(document).ready(function() {
-    $("#menu_div").animate({width: "220px"});
-});
-</script>
-<!-- Fim do Javascript -->
 
 <body>
 

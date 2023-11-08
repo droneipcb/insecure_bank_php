@@ -59,7 +59,7 @@ if (!isset($_POST['mensagem'])) {
   die("Mensagem vazia");
 }
 
-$mensagem = addslashes( $_POST['mensagem'] );
+$mensagem = $_POST['mensagem'];
 echo "<p>Mensagem: ".$mensagem;
 
 
