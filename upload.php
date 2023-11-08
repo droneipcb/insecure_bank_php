@@ -1,5 +1,6 @@
 <?php
 
+// Estas 3 diretivas ativam a geracao de erros no ecran
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -15,6 +16,9 @@ if(!isset($_SESSION['login_user']))
 $username = $_SESSION['login_user'];
 
 echo "<br>Username: ".$username;
+
+//print_r($_POST);
+//print_r(file_get_contents('php://input'));
 
 // Caso não seja enviado nenhum ficheiro
 $target_file='not_found.txt';
@@ -60,9 +64,10 @@ if (!isset($_POST['mensagem'])) {
 }
 
 $mensagem = $_POST['mensagem'];
-echo "<p>Mensagem: ".$mensagem;
+echo "<p>Mensagem: ".htmlentities($mensagem);
 
 
+// Reparar que existem segredos hardcoded no codigo fonte
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "aluno123";
@@ -79,6 +84,7 @@ $result = $conn->query($sqlQuery);
 
 $conn -> close();
 
+header("Location: welcome.php");
 
 
 ?>

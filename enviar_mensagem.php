@@ -1,9 +1,11 @@
 <?php
 
+// Estas 3 diretivas ativam a geracao de erros no ecran
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// iniciar sessao
 session_start();
 
 if(!isset($_SESSION['login_user']) || !isset($_SESSION['user_role'])) {
@@ -41,7 +43,7 @@ $username = $_SESSION['login_user'];
     <h1> Envie uma mensagem ao seu gestor de conta </h1>
     <p class="message_text"> Escreva a sua mensagem </p>
 
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
         <textarea name='mensagem' id='mensagem' > </textarea>
         <p class="message_text"> Pode também fazer o upload de um ficheiro </p>
 
