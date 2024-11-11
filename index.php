@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 </script>
 <h1>Welcome to Insecure Bank</h1>
-<h2>Just kidding, your money is safe</h2>
+<h2>The place where your money vanishes</h2>
 
 
 <div id="auth" class="auth_div">
